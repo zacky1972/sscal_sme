@@ -29,4 +29,5 @@ tasks:
       - clang -c {{.CFLAGS}} {{.CFLAGS_APPLE_BLAS}} -o apple_blas_sscal1.o blas_sscal1.c
       - clang -c {{.CFLAGS}} {{.CFLAGS_OPEN_BLAS}} -o open_blas_sscal1.o blas_sscal1.c
       - clang -c {{.CFLAGS}} {{.CFLAGS_SME}} -o sme_sscal1.o sme_sscal1.c
+      - clang -c {{.CFLAGS}} -o driver.o driver.c
     silent: true
