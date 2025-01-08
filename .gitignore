@@ -1,1 +1,4 @@
 *.o
+apple_blas
+open_blas
+sme
