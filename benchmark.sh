@@ -37,4 +37,16 @@ sme 10000 +
 sme 100000 +
 sme 1000000 +
 sme 10000000 +
+echo "===="
+clang_for 1000 -
+clang_for 10000 -
+clang_for 100000 -
+clang_for 1000000 -
+clang_for 10000000 -
+echo "----"
+clang_for 1000 +
+clang_for 10000 +
+clang_for 100000 +
+clang_for 1000000 +
+clang_for 10000000 +
 
