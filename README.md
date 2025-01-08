@@ -13,8 +13,11 @@ task
 ## How to run
 
 ```zsh
-./apple_blas COUNT
-./open_blas COUNT
-./sme COUNT
+./apple_blas COUNT -
+./apple_blas COUNT +
+./open_blas COUNT -
+./open_blas COUNT +
+./sme COUNT -
+./sme COUNT +
 ```
 
