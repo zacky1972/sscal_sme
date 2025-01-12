@@ -10,15 +10,10 @@ cd sscal_sme
 task
 ```
 
-## How to run
+## Usagge
 
 ```zsh
-./apple_blas COUNT -
-./apple_blas COUNT +
-./open_blas COUNT -
-./open_blas COUNT +
-./sme COUNT -
-./sme COUNT +
+zsh benchmark.sh
 ```
 
 ## License
