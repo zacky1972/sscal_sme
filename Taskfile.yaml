@@ -33,6 +33,8 @@ tasks:
       - clang -c {{.CFLAGS}} {{.CFLAGS_SME}} -o sme_sscal1.o sme_sscal1.c
       - clang -c {{.CFLAGS}} {{.CFLAGS_NEON}} -o neon_sscal1.o neon_sscal1.c
       - clang -c {{.CFLAGS}} {{.CFLAGS_NEON}} -o neon2_sscal1.o neon2_sscal1.c
+      - clang -c {{.CFLAGS}} {{.CFLAGS_NEON}} -o neon4_sscal1.o neon4_sscal1.c
+      - clang -c {{.CFLAGS}} {{.CFLAGS_NEON}} -o neon8_sscal1.o neon8_sscal1.c
       - clang -c {{.CFLAGS}} -o clang_for.o clang_for.c
       - clang -c {{.CFLAGS}} -o driver.o driver.c
       - clang -o apple_blas apple_blas_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_APPLE_BLAS}}
@@ -40,5 +42,7 @@ tasks:
       - clang -o sme sme_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_SME}}
       - clang -o neon neon_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_NEON}}
       - clang -o neon2 neon2_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_NEON}}
+      - clang -o neon4 neon4_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_NEON}}
+      - clang -o neon8 neon8_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_NEON}}
       - clang -o clang_for clang_for.o driver.o {{.LDFLAGS}}
     silent: true

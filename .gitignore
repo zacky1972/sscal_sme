@@ -4,3 +4,5 @@ open_blas
 sme
 neon
 neon2
+neon4
+neon8
