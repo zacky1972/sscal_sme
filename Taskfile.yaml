@@ -10,6 +10,7 @@ tasks:
         sh: |
           echo -I$(brew --prefix openblas)/include -DUSE_OPEN_BLAS
       CFLAGS_SME: -march=armv9-a+sme
+      CFLAGS_NEON: ''
       CFLAGS: >-
         $CFLAGS
         -std=c11
@@ -24,15 +25,20 @@ tasks:
         sh: |
           echo -lblas -L$(brew --prefix openblas)/lib
       LDFLAGS_SME: ''
+      LDFLAGS_NEON: ''
       LDFLAGS: $LDFLAGS
     cmds:
       - clang -c {{.CFLAGS}} {{.CFLAGS_APPLE_BLAS}} -o apple_blas_sscal1.o blas_sscal1.c
       - clang -c {{.CFLAGS}} {{.CFLAGS_OPEN_BLAS}} -o open_blas_sscal1.o blas_sscal1.c
       - clang -c {{.CFLAGS}} {{.CFLAGS_SME}} -o sme_sscal1.o sme_sscal1.c
+      - clang -c {{.CFLAGS}} {{.CFLAGS_NEON}} -o neon_sscal1.o neon_sscal1.c
+      - clang -c {{.CFLAGS}} {{.CFLAGS_NEON}} -o neon2_sscal1.o neon2_sscal1.c
       - clang -c {{.CFLAGS}} -o clang_for.o clang_for.c
       - clang -c {{.CFLAGS}} -o driver.o driver.c
       - clang -o apple_blas apple_blas_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_APPLE_BLAS}}
       - clang -o open_blas open_blas_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_OPEN_BLAS}}
       - clang -o sme sme_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_SME}}
+      - clang -o neon neon_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_NEON}}
+      - clang -o neon2 neon2_sscal1.o driver.o {{.LDFLAGS}} {{.LDFLAGS_NEON}}
       - clang -o clang_for clang_for.o driver.o {{.LDFLAGS}}
     silent: true
