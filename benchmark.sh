@@ -60,6 +60,18 @@ clang_for 10000000 +
 echo "===="
 if [ -e neon ]; then
 if [ "$(uname -m)" = "arm64" ] || [ "$(uname -m)" = "aarch64" ]; then
+neon_sp 1000 -
+neon_sp 10000 -
+neon_sp 100000 -
+neon_sp 1000000 -
+neon_sp 10000000 -
+echo "----"
+neon_sp 1000 +
+neon_sp 10000 +
+neon_sp 100000 +
+neon_sp 1000000 +
+neon_sp 10000000 +
+echo "===="
 neon 1000 -
 neon 10000 -
 neon 100000 -

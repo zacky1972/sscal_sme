@@ -2,6 +2,7 @@
 apple_blas
 open_blas
 sme
+neon_sp
 neon
 neon2
 neon4
