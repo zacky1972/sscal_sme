@@ -26,6 +26,10 @@ open_blas 100000 +
 open_blas 1000000 +
 open_blas 10000000 +
 echo "===="
+if [ -e sme ]; then
+if [ "$(uname -m)" = "arm64" ] || [ "$(uname -m)" = "aarch64" ]; then
+if [ "$(uname -o)" = "Darwin" ]; then
+if sysctl hw.optional | grep "SME: 1" >/dev/null; then
 sme 1000 -
 sme 10000 -
 sme 100000 -
@@ -37,6 +41,10 @@ sme 10000 +
 sme 100000 +
 sme 1000000 +
 sme 10000000 +
+fi
+fi
+fi
+fi
 echo "===="
 clang_for 1000 -
 clang_for 10000 -
