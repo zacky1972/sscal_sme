@@ -30,6 +30,18 @@ if [ -e sme ]; then
 if [ "$(uname -m)" = "arm64" ] || [ "$(uname -m)" = "aarch64" ]; then
 if [ "$(uname -o)" = "Darwin" ]; then
 if sysctl hw.optional | grep "SME: 1" >/dev/null; then
+sme_sp 1000 -
+sme_sp 10000 -
+sme_sp 100000 -
+sme_sp 1000000 -
+sme_sp 10000000 -
+echo "----"
+sme_sp 1000 +
+sme_sp 10000 +
+sme_sp 100000 +
+sme_sp 1000000 +
+sme_sp 10000000 +
+echo "===="
 sme 1000 -
 sme 10000 -
 sme 100000 -
@@ -41,10 +53,22 @@ sme 10000 +
 sme 100000 +
 sme 1000000 +
 sme 10000000 +
+echo "===="
 fi
 fi
 fi
 fi
+clang_for_sp 1000 -
+clang_for_sp 10000 -
+clang_for_sp 100000 -
+clang_for_sp 1000000 -
+clang_for_sp 10000000 -
+echo "----"
+clang_for_sp 1000 +
+clang_for_sp 10000 +
+clang_for_sp 100000 +
+clang_for_sp 1000000 +
+clang_for_sp 10000000 +
 echo "===="
 clang_for 1000 -
 clang_for 10000 -

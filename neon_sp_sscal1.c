@@ -11,19 +11,21 @@ void sscal1(float factor, float *vec, int vec_size)
     i = 0;
     vec_chunk = vld1q_f32(&vec[i]);
 
-    i = 4;
+    i += 4;
     result = vmulq_f32(vec_chunk, factor_vec);
     vec_chunk = vld1q_f32(&vec[i]);
 
-    for (i = 8; i < vec_size; i += 4) {
+    for (i += 4; i < vec_size;) {
         vst1q_f32(&vec[i - 8], result);
         result = vmulq_f32(vec_chunk, factor_vec);
         vec_chunk = vld1q_f32(&vec[i]);
+        i += 4;
     }
 
-    vst1q_f32(&vec[vec_size - 8], result);
+    vst1q_f32(&vec[i - 8], result);
     result = vmulq_f32(vec_chunk, factor_vec);
-    vst1q_f32(&vec[vec_size - 4], result);
+    i += 4;
+    vst1q_f32(&vec[i - 8], result);
 }
 
 void sscal_scopy(float factor, float *in, float *out, int vec_size)
@@ -36,17 +38,19 @@ void sscal_scopy(float factor, float *in, float *out, int vec_size)
     i = 0;
     vec_chunk = vld1q_f32(&in[i]);
 
-    i = 4;
+    i += 4;
     result = vmulq_f32(vec_chunk, factor_vec);
     vec_chunk = vld1q_f32(&in[i]);
 
-    for (i = 8; i < vec_size; i += 4) {
+    for (i += 4; i < vec_size;) {
         vst1q_f32(&out[i - 8], result);
         result = vmulq_f32(vec_chunk, factor_vec);
         vec_chunk = vld1q_f32(&in[i]);
+        i += 4;
     }
 
-    vst1q_f32(&out[vec_size - 8], result);
+    vst1q_f32(&out[i - 8], result);
     result = vmulq_f32(vec_chunk, factor_vec);
-    vst1q_f32(&out[vec_size - 4], result);
+    i += 4;
+    vst1q_f32(&out[i - 8], result);
 }

@@ -1,9 +1,12 @@
 *.o
 apple_blas
 open_blas
+sme_sp
 sme
 neon_sp
 neon
 neon2
 neon4
 neon8
+clang_for_sp
+clang_for
